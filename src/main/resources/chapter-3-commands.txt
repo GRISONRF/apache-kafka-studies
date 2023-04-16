@@ -8,19 +8,19 @@
 
 ## Navigate to the Kafka Scripts directory
 
-        cd /opt/bitnami/kafka/bin
+        cd /opt/bitnami/zookeeper/bin
 
 ## Creating new Topics
 
         ./kafka-topics.sh \
-            --zookeeper zookeeper:2181 \
+            --bootstrap-server localhost:9092 \
             --create \
             --topic kafka.learning.tweets \
             --partitions 1 \
             --replication-factor 1
 
         ./kafka-topics.sh \
-            --zookeeper zookeeper:2181 \
+            --bootstrap-server localhost:9092 \
             --create \
             --topic kafka.learning.alerts \
             --partitions 1 \
@@ -29,13 +29,13 @@
 ## Listing Topics
 
         ./kafka-topics.sh \
-            --zookeeper zookeeper:2181 \
+            --bootstrap-server localhost:9092 \
             --list
 
 ## Getting details about a Topic
 
         ./kafka-topics.sh \
-            --zookeeper zookeeper:2181 \
+            --bootstrap-server localhost:9092 \
             --describe
 
 
@@ -44,6 +44,8 @@
         ./kafka-console-producer.sh \
             --bootstrap-server localhost:29092 \
             --topic kafka.learning.tweets
+
+##--> after using those commands, you will get a prompt to type something. these are your 'tweets' and everytime you press enter you are saving the tweet. To quit, just press Ctrl + C and you will go back to the terminal, where you can type the next commands to consume the messages.
 
 ## Consuming Messages from Topics
 
