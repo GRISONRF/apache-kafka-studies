@@ -1,0 +1,52 @@
+#Exercise of Chapter 6:
+
+1. Create a kafka.usecase.students topic
+-> partitions = 2
+-> replication factor = 1
+
+2. Publish messages to the topic using the console producer.
+Consume them using the console consumer
+
+3.Create a Java producer and consumer for this topic
+
+###################
+
+1. to create a new topic:
+-> after log into the kafka container, go to the /opt/bitnami/kafka/bin and:
+
+./kafka-topics.sh \
+    --bootstrap-server localhost:9092 \
+    --create \
+    --topic kafka.usecase.students \
+    --partitions 2 \
+    --replication-factor 1
+
+2. To publish messages to topics:
+
+./kafka-console-producer.sh \
+    --bootstrap-server localhost:29092 \
+    --property "parse.key=true" \
+    --property "key.separator=:" \
+    --topic kafka.usecase.students
+
+# add some keys with students name, ex:  101:Rafaela...
+
+To consume messages from the topic:
+
+./kafka-console-consumer.sh \
+    --bootstrap-server localhost:29092 \
+    --topic kafka.usecase.students \
+    --group usecase-consumer-group \
+    --property print.key=true \
+    --property key.separator=" = " \
+    --from-beginning
+
+3. Create a Java producer and consumer for this topic
+(files are in the chapter6 directory)
+
+
+When you build production grade code you will need to change your implementation based on few things:
+
+On the producer side, this code currently blocks until the producer actually publishes to kafka. So this may not scale well. You may want to explore a synchronize publishing capabilities.
+
+On the consumer side, you may want to launch processing on a separate thread so the consumer is not blocked. You may also want to manually acknowledge receipt of the message after the message has been successfully processed.
