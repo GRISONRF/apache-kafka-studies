@@ -6,6 +6,7 @@ import org.apache.kafka.clients.producer.ProducerRecord;
 
 import java.util.Properties;
 import java.util.Random;
+import java.lang.String;
 
 public class KafkaSimpleProducer {
 

@@ -51,7 +51,8 @@ public class KafkaSimpleConsumer {
             ConsumerRecords<String, String> messages =
                     simpleConsumer.poll(Duration.ofMillis(100));
 
-            //Print batch of records consumed
+            //Print batch of records consumed  -- in real world use cases, we would to process the message as required.
+            // It is usually recommended to use a separate thread for actual processing, so we do not block the consumer thread. In this case, the client automatically acknowledges the receipt of the message once it is received. If we need to wait until the message is successfully processed, there are additional setup parameters and methods available.
             for (ConsumerRecord<String, String> message : messages)
                 System.out.println("Message fetched : " + message);
         }
