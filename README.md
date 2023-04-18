@@ -2,6 +2,8 @@
 This project is a tutorial on how to set up and use Kafka, a distributed streaming platform, using Docker.<br>
 This project/tutorial covers the basics of creating and managing Kafka topics, producing and consuming messages, and configuring consumer groups. By following the steps in this tutorial, I was able to gain a solid understanding of Kafka's core concepts and now I'm able to apply them in future projects.
 
+You can also find my notes about the basics of Apache Kafka <a href="https://medium.com/@grisonrf/understanding-apache-kafka-42100d569a1a">here</a> and <a href="https://medium.com/@grisonrf/basic-concepts-of-kafka-e4eff0db4acd">here</a>.
+
 ## Getting Started
 To get started with this project, you need to have Docker installed on your machine. If you don't have Docker, you can download it from the official website `https://www.docker.com/products/docker-desktop`. Once you have Docker installed, follow these steps:
 
